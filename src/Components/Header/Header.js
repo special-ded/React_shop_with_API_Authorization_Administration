@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../App";
 import cart from "../../assets/imgs/cart.png";
 import "./Header.css";
 
 export default function Header({ FilterHTML }) {
+  const cartItems = useContext(CartContext);
+
   return (
     <header className="header">
       <nav className="header_container">
@@ -19,8 +22,9 @@ export default function Header({ FilterHTML }) {
           </li>
           {FilterHTML ? <li>{FilterHTML()}</li> : null}
           <li>
-            <Link to="/cart">
-              <img width={"24px"} src={cart}></img>
+            <Link className="cart_wrapper" to="/cart">
+              <img className="cart_img" width={"30px"} src={cart}></img>
+              <span className="counter">{cartItems.length}</span>
             </Link>
           </li>
         </ul>

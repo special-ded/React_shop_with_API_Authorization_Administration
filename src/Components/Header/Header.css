@@ -18,6 +18,29 @@ ul {
   padding: 15px 0 5px 0;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   list-style: none;
+}
+
+ul > li:active {
+  transform: scale(1.1);
+}
+
+.cart_wrapper {
+  position: relative;
+}
+
+.counter {
+  font-size: 12px;
+  padding: 2px;
+  top: -3px;
+  left: 15px;
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #221f1f;
+  border: 2px solid rgb(255, 255, 255);
+  color: white;
+  text-align: center;
 }

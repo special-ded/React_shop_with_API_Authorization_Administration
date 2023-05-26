@@ -11,6 +11,7 @@ import Admin from "./Pages/Admin/Admin";
 import Login from "./Components/Login/Login";
 
 export const ProductsContext = React.createContext();
+export const CartContext = React.createContext();
 const BASE_URL = "https://hys-fe-course-api-omega.vercel.app";
 
 function App() {
@@ -43,55 +44,53 @@ function App() {
 
   return (
     <div className="App">
-      <ProductsContext.Provider value={products}>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={[
-                <Header key={uuid.v4()} />,
-                <Home key={uuid.v4()} addToCart={addToCart} />,
-                <Footer key={uuid.v4()} />,
-              ]}
-            />
-            <Route
-              path="/shop"
-              element={[
-                <Shop key={uuid.v4()} addToCart={addToCart} />,
-                <Footer key={uuid.v4()} />,
-              ]}
-            />
-            <Route
-              path="/admin"
-              element={[
-                <Header key={uuid.v4()} />,
-                <Admin key={uuid.v4()} />,
-                <Footer key={uuid.v4()} />,
-              ]}
-            />
-            <Route
-              path="/login"
-              element={[
-                <Header key={uuid.v4()} />,
-                <Login key={uuid.v4()} />,
-                <Footer key={uuid.v4()} />,
-              ]}
-            />
-            <Route
-              path="/cart"
-              element={[
-                <Header key={uuid.v4()} />,
-                <Cart
-                  key={uuid.v4()}
-                  cartItems={cartItems}
-                  removeFromCart={removeFromCart}
-                />,
-                <Footer key={uuid.v4()} />,
-              ]}
-            />
-          </Routes>
-        </BrowserRouter>
-      </ProductsContext.Provider>
+      <CartContext.Provider value={cartItems}>
+        <ProductsContext.Provider value={products}>
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={[
+                  <Header key={uuid.v4()} />,
+                  <Home key={uuid.v4()} addToCart={addToCart} />,
+                  <Footer key={uuid.v4()} />,
+                ]}
+              />
+              <Route
+                path="/shop"
+                element={[
+                  <Shop key={uuid.v4()} addToCart={addToCart} />,
+                  <Footer key={uuid.v4()} />,
+                ]}
+              />
+              <Route
+                path="/admin"
+                element={[
+                  <Header key={uuid.v4()} />,
+                  <Admin key={uuid.v4()} />,
+                  <Footer key={uuid.v4()} />,
+                ]}
+              />
+              <Route
+                path="/login"
+                element={[
+                  <Header key={uuid.v4()} />,
+                  <Login key={uuid.v4()} />,
+                  <Footer key={uuid.v4()} />,
+                ]}
+              />
+              <Route
+                path="/cart"
+                element={[
+                  <Header key={uuid.v4()} />,
+                  <Cart key={uuid.v4()} removeFromCart={removeFromCart} />,
+                  <Footer key={uuid.v4()} />,
+                ]}
+              />
+            </Routes>
+          </BrowserRouter>
+        </ProductsContext.Provider>
+      </CartContext.Provider>
     </div>
   );
 }

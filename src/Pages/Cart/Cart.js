@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useContext } from "react";
+import { CartContext } from "../../App";
 
-export default function Cart({ cartItems, removeFromCart }) {
+export default function Cart({ removeFromCart }) {
+  const cartItems = useContext(CartContext);
   useEffect(() => {
     console.log(cartItems);
   }, [cartItems]);
-  console.log(cartItems);
 
   return (
     <section className="container">
