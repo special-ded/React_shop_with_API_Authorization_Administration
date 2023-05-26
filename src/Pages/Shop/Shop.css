@@ -1,0 +1,62 @@
+.shop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.filterContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filterInput {
+  width: 150px;
+  height: 25px;
+  outline: 0;
+  border: 0;
+  outline-style: solid;
+  outline-color: #e0a8ad;
+  border-radius: 2px;
+  font-size: 16px;
+  color: #4e4e4e;
+  font-family: Lato, sans-serif;
+}
+
+.filterInput:focus {
+  font-size: 16px;
+  height: 22px;
+  outline-width: 2px;
+}
+
+/* LOADER */
+
+.loader {
+  margin-top: 200px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+.loader:after {
+  content: " ";
+  display: block;
+  width: 84px;
+  height: 84px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid rgb(137, 134, 131);
+  border-color: rgb(137, 134, 131) transparent rgb(137, 134, 131) transparent;
+  animation: loader 1.2s linear infinite;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* LOADER */
