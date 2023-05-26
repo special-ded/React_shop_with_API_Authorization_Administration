@@ -3,31 +3,29 @@
   flex-wrap: wrap;
   justify-content: space-between;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .filterContainer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  padding: 10px 0 10px 0;
+  text-align: center;
 }
 
 .filterInput {
-  width: 150px;
-  height: 25px;
-  outline: 0;
+  width: 50%;
+  height: 45px;
+  outline: 1px;
   border: 0;
   outline-style: solid;
-  outline-color: #e0a8ad;
+  outline-color: #4e4e4e;
   border-radius: 2px;
-  font-size: 16px;
+  font-size: 18px;
   color: #4e4e4e;
   font-family: Lato, sans-serif;
 }
 
 .filterInput:focus {
-  font-size: 16px;
-  height: 22px;
+  color: #221f1f;
   outline-width: 2px;
 }
 

@@ -16,7 +16,7 @@ export default function Home({ addToCart }) {
       </section>
       <section className="shop container">
         {products ? null : <div className="loader"></div>}
-        {products?.slice(0, 3)?.map((product) => (
+        {products?.slice(0, 5)?.map((product) => (
           <Card key={product.id} product={product} addToCart={addToCart} />
         ))}
       </section>

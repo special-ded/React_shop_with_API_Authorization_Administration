@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { CartContext } from "../../App";
+import "./Cart.css";
 
 export default function Cart({ removeFromCart }) {
   const cartItems = useContext(CartContext);
@@ -8,29 +9,31 @@ export default function Cart({ removeFromCart }) {
   }, [cartItems]);
 
   return (
-    <section className="container">
-      <h1>Cart Items</h1>
-      {cartItems.length === 0 ? (
-        <h2>Your Cart is empty</h2>
-      ) : (
-        cartItems.map((item) => (
-          <div key={item.id} className="card_container">
-            <div className="images">
-              <img src={item.image} />
-            </div>
-            <div className="product">
-              <h1>{item?.title}</h1>
-              <h2>{item.price}</h2>
-              <p className="desc">{item?.description}</p>
-              <div className="buttons">
-                <button onClick={() => removeFromCart(item.id)} className="add">
-                  Remove from Cart
-                </button>
+    <>
+      <h1 className="title">Cart Items</h1>
+      <section className="cart container">
+        {cartItems.length === 0 ? (
+          <h2>Your Cart is empty</h2>
+        ) : (
+          cartItems.map((item) => (
+            <article key={item.id} className="card_container">
+              <div className="images">
+                <img src={item.image} />
               </div>
-            </div>
-          </div>
-        ))
-      )}
-    </section>
+              <div className="product">
+                <h1>{item?.name.slice(0, 20)}</h1>
+                <h2>{item.price} $</h2>
+                <p className="desc">{item?.description.slice(0, 100)}</p>
+                <div className="buttons">
+                  <button onClick={() => removeFromCart(item.id)}>
+                    Remove from Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          ))
+        )}
+      </section>
+    </>
   );
 }

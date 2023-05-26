@@ -76,31 +76,3 @@ body {
 .addToCartBtn:active {
   background: #61595aa8;
 }
-
-.sizes {
-  display: grid;
-  color: #d9aab7;
-  grid-template-columns: repeat(auto-fill, 30px);
-  width: 60%;
-  grid-gap: 4px;
-  margin-left: 20px;
-  margin-top: 5px;
-}
-
-.pick {
-  margin-top: 11px;
-  margin-bottom: 0;
-  margin-left: 20px;
-}
-
-.size {
-  padding: 9px;
-  border: 1px solid #e0c9cb;
-  font-size: 0.7em;
-  text-align: center;
-}
-
-.focus {
-  background: #f5f5f5;
-  color: #f5f5f5;
-}

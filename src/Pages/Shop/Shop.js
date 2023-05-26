@@ -10,10 +10,6 @@ export default function Shop({ addToCart }) {
 
   const inputValue = useRef(null);
 
-  useEffect(() => {
-    inputValue.current.focus();
-  });
-
   function Filter() {
     const result = products?.filter((product) =>
       (product.name + product.description + product.price)
@@ -23,24 +19,16 @@ export default function Shop({ addToCart }) {
     setFilteredProducts(result);
   }
 
-  function FilterHTML() {
-    return (
+  return (
+    <>
       <div className="filterContainer">
         <input
-          placeholder="Search Input.."
+          placeholder="I am searching..."
           className="filterInput"
           ref={inputValue}
           onChange={Filter}
         ></input>
       </div>
-    );
-  }
-
-  console.log(filteredProducts);
-  console.log(products);
-  return (
-    <>
-      <Header FilterHTML={FilterHTML} />
       <section className="shop container">
         {products ? null : <div className="loader"></div>}
         {filteredProducts
