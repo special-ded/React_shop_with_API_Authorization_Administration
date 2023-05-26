@@ -55,7 +55,8 @@ body {
   text-align: justify;
 }
 
-.addToCartBtn {
+.addToCartBtn,
+.removeBtn {
   background: #e0a8ad;
   padding: 10px;
   display: inline-block;
@@ -69,10 +70,12 @@ body {
   cursor: pointer;
 }
 
-.addToCartBtn:hover {
+.addToCartBtn:hover,
+.removeBtn:hover {
   background: #e0a8ada8;
 }
 
-.addToCartBtn:active {
+.addToCartBtn:active,
+.removeBtn:active {
   background: #61595aa8;
 }

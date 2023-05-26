@@ -1,6 +1,5 @@
-import React, { useContext, useState, useRef, useMemo, useEffect } from "react";
+import React, { useContext, useState, useRef } from "react";
 import Card from "../../Components/Card/Card";
-import Header from "../../Components/Header/Header";
 import { ProductsContext } from "../../App";
 import "./Shop.css";
 

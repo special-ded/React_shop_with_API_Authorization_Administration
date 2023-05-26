@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, json } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import uuid from "react-native-uuid";
 import Header from "./Components/Header/Header";
 import Home from "./Pages/Home/Home";
@@ -25,14 +25,10 @@ function App() {
   }
 
   function removeFromCart(id) {
-    console.log(id);
-    const result = cartItems.filter((item) => item.id === id);
-    console.log(result);
-
     const index = cartItems.findIndex((item) => item.id === id);
-    const x = cartItems.splice(index, 1);
-    console.log(cartItems);
-    setCartItems((prev) => cartItems);
+    const cartCopy = [...cartItems];
+    cartCopy.splice(index, 1);
+    setCartItems(cartCopy);
   }
 
   useEffect(() => {

@@ -4,9 +4,9 @@ import "./Cart.css";
 
 export default function Cart({ removeFromCart }) {
   const cartItems = useContext(CartContext);
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+  // useEffect(() => {
+  //   console.log(cartItems);
+  // }, [cartItems]);
 
   return (
     <>
@@ -25,7 +25,10 @@ export default function Cart({ removeFromCart }) {
                 <h2>{item.price} $</h2>
                 <p className="desc">{item?.description.slice(0, 100)}</p>
                 <div className="buttons">
-                  <button onClick={() => removeFromCart(item.id)}>
+                  <button
+                    className="removeBtn"
+                    onClick={() => removeFromCart(item.id)}
+                  >
                     Remove from Cart
                   </button>
                 </div>
