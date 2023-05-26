@@ -20,9 +20,6 @@ export default function Home({ addToCart }) {
           <Card key={product.id} product={product} addToCart={addToCart} />
         ))}
       </section>
-      <p>
-        Visit our store <Link to="/shop">SHOP</Link>
-      </p>
     </main>
   );
 }
