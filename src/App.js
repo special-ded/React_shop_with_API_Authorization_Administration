@@ -6,9 +6,9 @@ import Home from "./Pages/Home/Home";
 import Shop from "./Pages/Shop/Shop";
 import Cart from "./Pages/Cart/Cart";
 import Footer from "./Components/Footer/Footer";
-import "./App.css";
 import Admin from "./Pages/Admin/Admin";
 import Login from "./Components/Login/Login";
+import "./App.css";
 
 export const ProductsContext = React.createContext();
 export const CartContext = React.createContext();
@@ -23,8 +23,8 @@ function App() {
     if (exist) {
       const index = cartItems.findIndex((item) => item.id === product.id);
       const cartCopy = [...cartItems];
-      cartCopy.splice(index, 1);
-      setCartItems([...cartCopy, { ...exist, quantity: exist.quantity + 1 }]);
+      cartCopy.splice(index, 1, { ...exist, quantity: exist.quantity + 1 });
+      setCartItems(cartCopy);
       return;
     }
     setCartItems([...cartItems, { ...product, quantity: 1 }]);
@@ -35,6 +35,23 @@ function App() {
     const index = cartItems.findIndex((item) => item.id === id);
     const cartCopy = [...cartItems];
     cartCopy.splice(index, 1);
+    setCartItems(cartCopy);
+  }
+
+  function addBtnHandler(product) {
+    console.log(cartItems);
+    addToCart(product);
+  }
+
+  function removeBtnHandler(product) {
+    if (product.quantity === 1) {
+      removeFromCart(product.id);
+      return;
+    }
+    const exist = cartItems.find((element) => element.id === product.id);
+    const index = cartItems.findIndex((item) => item.id === product.id);
+    const cartCopy = [...cartItems];
+    cartCopy.splice(index, 1, { ...exist, quantity: exist.quantity - 1 });
     setCartItems(cartCopy);
   }
 
@@ -87,7 +104,12 @@ function App() {
                 path="/cart"
                 element={[
                   <Header key={uuid.v4()} />,
-                  <Cart key={uuid.v4()} removeFromCart={removeFromCart} />,
+                  <Cart
+                    key={uuid.v4()}
+                    removeFromCart={removeFromCart}
+                    addBtnHandler={addBtnHandler}
+                    removeBtnHandler={removeBtnHandler}
+                  />,
                   <Footer key={uuid.v4()} />,
                 ]}
               />

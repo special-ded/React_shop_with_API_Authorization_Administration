@@ -5,3 +5,7 @@
   justify-content: center;
   margin-bottom: 60px;
 }
+.buttons {
+  display: flex;
+  gap: 30px;
+}

@@ -2,11 +2,8 @@ import React, { useEffect, useContext } from "react";
 import { CartContext } from "../../App";
 import "./Cart.css";
 
-export default function Cart({ removeFromCart }) {
+export default function Cart({ addBtnHandler, removeBtnHandler }) {
   const cartItems = useContext(CartContext);
-  // useEffect(() => {
-  //   console.log(cartItems);
-  // }, [cartItems]);
 
   return (
     <>
@@ -16,7 +13,7 @@ export default function Cart({ removeFromCart }) {
           <h2>Your Cart is empty</h2>
         ) : (
           cartItems.map((item) => (
-            <article key={item.id} className="card_container">
+            <article key={item.id} className="card__container">
               <div className="images">
                 <img src={item.image} />
               </div>
@@ -26,10 +23,23 @@ export default function Cart({ removeFromCart }) {
                 <p className="desc">{item?.description.slice(0, 100)}</p>
                 <div className="buttons">
                   <button
+                    className="remove-btn"
+                    onClick={() => removeBtnHandler(item)}
+                  >
+                    -
+                  </button>
+                  <p className="quantityCounter">{item.quantity}</p>
+                  {/* <button
                     className="removeBtn"
                     onClick={() => removeFromCart(item.id)}
                   >
                     Remove from Cart
+                  </button> */}
+                  <button
+                    className="remove-btn"
+                    onClick={() => addBtnHandler(item)}
+                  >
+                    +
                   </button>
                 </div>
               </div>

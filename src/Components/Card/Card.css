@@ -4,7 +4,7 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-.card_container {
+.card__container {
   display: flex;
   align-items: center;
   margin: auto;
@@ -15,21 +15,21 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
-.card_container:hover {
+.card__container:hover {
   box-shadow: 0px 0px 5px 10px #f5f5f5;
 }
 
-.card_container p {
+.card__container p {
   font-size: 0.6em;
   letter-spacing: 1px;
 }
 
-.card_container h1 {
+.card__container h1 {
   font-size: 1.2em;
   color: #4e4e4e;
 }
 
-.card_container h2 {
+.card__container h2 {
   color: #c3a1a0;
   margin-top: 5px;
 }
@@ -55,8 +55,8 @@ body {
   text-align: justify;
 }
 
-.addToCartBtn,
-.removeBtn {
+.add-to-cart-btn,
+.remove-btn {
   background: #e0a8ad;
   padding: 10px;
   display: inline-block;
@@ -70,12 +70,12 @@ body {
   cursor: pointer;
 }
 
-.addToCartBtn:hover,
-.removeBtn:hover {
+.add-to-cart-btn:hover,
+.remove-btn:hover {
   background: #e0a8ada8;
 }
 
-.addToCartBtn:active,
-.removeBtn:active {
+.add-to-cart-btn:active,
+.remove-btn:active {
   background: #61595aa8;
 }
