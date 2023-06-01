@@ -19,7 +19,14 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   function addToCart(product) {
-    console.log(product);
+    const exist = cartItems.find((element) => element.id === product.id);
+    if (exist) {
+      const index = cartItems.findIndex((item) => item.id === product.id);
+      const cartCopy = [...cartItems];
+      cartCopy.splice(index, 1);
+      setCartItems([...cartCopy, { ...exist, quantity: exist.quantity + 1 }]);
+      return;
+    }
     setCartItems([...cartItems, { ...product, quantity: 1 }]);
     console.log(cartItems);
   }
