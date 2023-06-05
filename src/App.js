@@ -81,7 +81,11 @@ function App() {
                 path="/shop"
                 element={[
                   <Header key={uuid.v4()} />,
-                  <Shop key={uuid.v4()} addToCart={addToCart} />,
+                  <Shop
+                    key={uuid.v4()}
+                    removeFromCart={removeFromCart}
+                    addToCart={addToCart}
+                  />,
                   <Footer key={uuid.v4()} />,
                 ]}
               />

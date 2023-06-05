@@ -3,7 +3,7 @@ import Card from "../../Components/Card/Card";
 import { ProductsContext } from "../../App";
 import "./Shop.css";
 
-export default function Shop({ addToCart }) {
+export default function Shop({ addToCart, removeFromCart }) {
   const products = useContext(ProductsContext);
   const [filteredProducts, setFilteredProducts] = useState(null);
 
@@ -17,7 +17,6 @@ export default function Shop({ addToCart }) {
     );
     setFilteredProducts(result);
   }
-
   return (
     <>
       <div className="filterContainer">
@@ -32,10 +31,20 @@ export default function Shop({ addToCart }) {
         {products ? null : <div className="loader"></div>}
         {filteredProducts
           ? filteredProducts?.map((product) => (
-              <Card key={product.id} product={product} addToCart={addToCart} />
+              <Card
+                key={product.id}
+                product={product}
+                removeFromCart={removeFromCart}
+                addToCart={addToCart}
+              />
             ))
           : products?.map((product) => (
-              <Card key={product.id} product={product} addToCart={addToCart} />
+              <Card
+                key={product.id}
+                product={product}
+                removeFromCart={removeFromCart}
+                addToCart={addToCart}
+              />
             ))}
       </section>
     </>

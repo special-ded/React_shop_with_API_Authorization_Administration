@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { CartContext } from "../../App";
 import "./Card.css";
 
-export default function Card({ product, addToCart }) {
+export default function Card({ product, addToCart, removeFromCart }) {
+  const [inCart, setInCart] = useState(false);
+  const cartItems = useContext(CartContext);
+
+  useEffect(() => {
+    if (cartItems.find((element) => element.id === product.id)) {
+      setInCart(true);
+      return;
+    }
+
+    if (!cartItems.find((element) => element.id === product.id)) {
+      setInCart(false);
+    }
+  }, [cartItems]);
+
+  function clickHandler(product) {
+    if (!inCart) {
+      addToCart(product);
+    } else {
+      removeFromCart(product.id);
+    }
+  }
+
   return (
     <article className="card__container">
       <figure className="images">
@@ -11,8 +34,11 @@ export default function Card({ product, addToCart }) {
         <h1>{product.name.slice(0, 20)}</h1>
         <h2>{product.price} $</h2>
         <p className="desc">{product.description.slice(0, 100)};</p>
-        <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
-          Add to Cart
+        <button
+          className="add-to-cart-btn"
+          onClick={() => clickHandler(product)}
+        >
+          {inCart ? "In Cart" : "Add to Cart"}
         </button>
       </div>
     </article>
