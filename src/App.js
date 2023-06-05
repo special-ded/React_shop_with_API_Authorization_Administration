@@ -33,7 +33,7 @@ function App() {
   }
 
   function removeFromCart(id) {
-    setCartItems(cartItems.filter((item) => item.id !== id));
+    setCartItems((cartItems) => cartItems.filter((item) => item.id !== id));
   }
 
   function addBtnHandler(product) {

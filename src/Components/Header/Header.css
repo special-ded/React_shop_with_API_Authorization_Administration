@@ -44,3 +44,6 @@ ul > li:active {
   color: white;
   text-align: center;
 }
+.user_img {
+  margin-right: 20px;
+}

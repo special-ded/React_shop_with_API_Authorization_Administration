@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
 import { ProductsContext } from "../../App";
 import Card from "../../Components/Card/Card";
 
