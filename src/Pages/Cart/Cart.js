@@ -29,12 +29,6 @@ export default function Cart({ addBtnHandler, removeBtnHandler }) {
                     -
                   </button>
                   <p className="quantityCounter">{item.quantity}</p>
-                  {/* <button
-                    className="removeBtn"
-                    onClick={() => removeFromCart(item.id)}
-                  >
-                    Remove from Cart
-                  </button> */}
                   <button
                     className="remove-btn"
                     onClick={() => addBtnHandler(item)}

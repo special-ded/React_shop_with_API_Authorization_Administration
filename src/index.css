@@ -28,6 +28,19 @@ h6 {
   font-weight: normal;
 }
 
+.button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  height: 48px;
+  line-height: 48px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: #282c34;
+  color: #fff;
+}
+
 .container {
   max-width: 1200px;
   padding: 0 20px 0 20px;

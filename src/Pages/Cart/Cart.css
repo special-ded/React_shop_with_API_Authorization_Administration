@@ -3,8 +3,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 175px;
 }
+
 .buttons {
   display: flex;
   gap: 30px;
