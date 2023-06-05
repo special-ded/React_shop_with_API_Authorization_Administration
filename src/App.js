@@ -33,10 +33,7 @@ function App() {
   }
 
   function removeFromCart(id) {
-    const index = cartItems.findIndex((item) => item.id === id);
-    const cartCopy = [...cartItems];
-    cartCopy.splice(index, 1);
-    setCartItems(cartCopy);
+    setCartItems(cartItems.filter((item) => item.id !== id));
   }
 
   function addBtnHandler(product) {
@@ -73,7 +70,11 @@ function App() {
                 path="/"
                 element={[
                   <Header key={uuid.v4()} />,
-                  <Home key={uuid.v4()} addToCart={addToCart} />,
+                  <Home
+                    key={uuid.v4()}
+                    addToCart={addToCart}
+                    removeFromCart={removeFromCart}
+                  />,
                   <Footer key={uuid.v4()} />,
                 ]}
               />

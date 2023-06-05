@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ProductsContext } from "../../App";
 import Card from "../../Components/Card/Card";
 
-export default function Home({ addToCart }) {
+export default function Home({ addToCart, removeFromCart }) {
   const products = useContext(ProductsContext);
   console.log(products);
 
@@ -17,7 +17,12 @@ export default function Home({ addToCart }) {
       <section className="shop container">
         {products ? null : <div className="loader"></div>}
         {products?.slice(0, 5)?.map((product) => (
-          <Card key={product.id} product={product} addToCart={addToCart} />
+          <Card
+            key={product.id}
+            product={product}
+            removeFromCart={removeFromCart}
+            addToCart={addToCart}
+          />
         ))}
       </section>
     </main>
