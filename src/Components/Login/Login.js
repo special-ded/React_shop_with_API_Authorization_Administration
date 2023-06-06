@@ -1,13 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import LoginCSS from "./Login.module.css";
 import axios from "axios";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])•{8,24}$/;
 const LOGIN_URL = "https://hys-fe-course-api-omega.vercel.app/auth/login";
 
-export default function Login() {
+export default function Login({ onClose }) {
   const userRef = useRef();
   const passwordRef = useRef();
   const errRef = useRef();
@@ -75,38 +75,40 @@ export default function Login() {
   }
 
   return (
-    <div className="login-page">
-      <div className="form">
-        <form onSubmit={submitHandler} className="login-form">
-          <input
-            ref={userRef}
-            onChange={(e) => setUser(e.target.value)}
-            type="text"
-            placeholder="username"
-            required
-          />
-          <input
-            ref={passwordRef}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            placeholder="password"
-            required
-          />
-          <input
-            ref={passwordRef}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            area-aria-invalid={validMatch ? "false" : "true"}
-            area-describedby="confirmnote"
-            placeholder="confirm password"
-            required
-          />
-          <p id="confirmnote"> Must match first password input field</p>
-          <button>Register</button>
-          <p className="message">
-            Already registered? <a href="/login"> Log In</a>
-          </p>
-        </form>
+    <div className={LoginCSS.bg}>
+      <div className={LoginCSS.login_page}>
+        <div className={LoginCSS.form}>
+          <form onSubmit={submitHandler}>
+            <input
+              ref={userRef}
+              onChange={(e) => setUser(e.target.value)}
+              type="text"
+              placeholder="username"
+              required
+            />
+            <input
+              ref={passwordRef}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder="password"
+              required
+            />
+            <input
+              ref={passwordRef}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              area-aria-invalid={validMatch ? "false" : "true"}
+              area-describedby="confirmnote"
+              placeholder="confirm password"
+              required
+            />
+            <p id="confirmnote"> Must match first password input field</p>
+            <button onClick={() => onClose()}>Register</button>
+            <p className={LoginCSS.message}>
+              Already registered? <a href="/login"> Log In</a>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   );

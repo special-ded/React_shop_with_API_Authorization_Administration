@@ -1,4 +1,4 @@
-import "./Admin.css";
+import AdminCSS from "./Admin.module.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 

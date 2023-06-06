@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "../../App";
-import "./Card.css";
+import CardCSS from "./Card.module.css";
 
 export default function Card({ product, addToCart, removeFromCart }) {
   const [inCart, setInCart] = useState(false);
@@ -26,16 +26,16 @@ export default function Card({ product, addToCart, removeFromCart }) {
   }
 
   return (
-    <article className="card__container">
-      <figure className="images">
+    <article className={CardCSS.card__container}>
+      <figure className={CardCSS.images}>
         <img src={product.image} />
       </figure>
-      <div className="product">
+      <div className={CardCSS.product}>
         <h1>{product.name.slice(0, 20)}</h1>
         <h2>{product.price} $</h2>
-        <p className="desc">{product.description.slice(0, 100)};</p>
+        <p className={CardCSS.desc}>{product.description.slice(0, 100)};</p>
         <button
-          className="add-to-cart-btn"
+          className={CardCSS.add_to_cart_btn}
           onClick={() => clickHandler(product)}
         >
           {inCart ? "In Cart" : "Add to Cart"}

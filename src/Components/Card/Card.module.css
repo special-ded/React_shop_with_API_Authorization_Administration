@@ -55,7 +55,7 @@ body {
   text-align: justify;
 }
 
-.add-to-cart-btn,
+.add_to_cart_btn,
 .remove-btn {
   background: #e0a8ad;
   padding: 10px;
@@ -70,12 +70,12 @@ body {
   cursor: pointer;
 }
 
-.add-to-cart-btn:hover,
+.add_to_cart_btn:hover,
 .remove-btn:hover {
   background: #e0a8ada8;
 }
 
-.add-to-cart-btn:active,
+.add_to_cart_btn:active,
 .remove-btn:active {
   background: #61595aa8;
 }
