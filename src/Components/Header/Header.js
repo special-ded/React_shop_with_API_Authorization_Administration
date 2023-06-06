@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../App";
 import cart from "../../assets/imgs/cart.png";
 import user from "../../assets/imgs/user.png";
+import LoginModal from "../Modals/LoginModal/LoginModal";
+import { createPortal } from "react-dom";
 import "./Header.css";
 
 export default function Header() {
   const cartItems = useContext(CartContext);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <header className="header">
@@ -21,8 +24,13 @@ export default function Header() {
           <li>
             <Link to="/admin">Admin</Link>
           </li>
+          {showModal &&
+            createPortal(
+              <LoginModal onClose={() => setShowModal(false)} />,
+              document.body
+            )}
           <li>
-            <Link to="/cabinet">
+            <Link onClick={() => setShowModal(true)}>
               <img className="user_img" width={"30px"} src={user}></img>
             </Link>
             <Link className="cart_wrapper" to="/cart">
