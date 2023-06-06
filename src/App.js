@@ -9,7 +9,7 @@ import Footer from "./Components/Footer/Footer";
 import Admin from "./Pages/Admin/Admin";
 import Login from "./Components/Login/Login";
 import "./App.css";
-import CartReceipt from "./Components/CartReceipt/CartReceipt";
+import Checkout from "./Components/CartReceipt/Checkout";
 
 export const ProductsContext = React.createContext();
 export const CartContext = React.createContext();
@@ -116,7 +116,7 @@ function App() {
                     addBtnHandler={addBtnHandler}
                     removeBtnHandler={removeBtnHandler}
                   />,
-                  <CartReceipt key={uuid.v4()} />,
+                  <Checkout key={uuid.v4()} />,
                   <Footer key={uuid.v4()} />,
                 ]}
               />

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./Home.css";
+import HomeCSS from "./Home.module.css";
 import { ProductsContext } from "../../App";
 import Card from "../../Components/Card/Card";
 
@@ -8,13 +8,13 @@ export default function Home({ addToCart, removeFromCart }) {
   console.log(products);
 
   return (
-    <main className="home container">
-      <section className="title">
+    <main className={HomeCSS.home}>
+      <section className={HomeCSS.title}>
         <h1>Welcome to the shop</h1>
         <h1>and check Our Bestsellers</h1>
       </section>
-      <section className="shop container">
-        {products ? null : <div className="loader"></div>}
+      <section className={HomeCSS.card_wrapper}>
+        {products ? null : <div className={HomeCSS.loader}></div>}
         {products?.slice(0, 5)?.map((product) => (
           <Card
             key={product.id}

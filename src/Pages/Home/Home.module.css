@@ -1,0 +1,16 @@
+.home {
+  max-width: 1200px;
+  padding: 0 20px 0 20px;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.card_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 60px;
+}

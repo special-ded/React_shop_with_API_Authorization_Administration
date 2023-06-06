@@ -1,17 +1,18 @@
 .shop {
+  max-width: 1200px;
+  padding: 0 20px 0 20px;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  justify-content: center;
   margin-bottom: 60px;
 }
 
-.filterContainer {
+.filter {
   padding: 10px 0 10px 0;
   text-align: center;
 }
 
-.filterInput {
+.filter_input {
   width: 50%;
   height: 45px;
   outline: 1px;
@@ -24,7 +25,7 @@
   font-family: Lato, sans-serif;
 }
 
-.filterInput:focus {
+.filter_input:focus {
   color: #221f1f;
   outline-width: 2px;
 }

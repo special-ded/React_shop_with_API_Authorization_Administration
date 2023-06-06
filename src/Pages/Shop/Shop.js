@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef } from "react";
 import Card from "../../Components/Card/Card";
 import { ProductsContext } from "../../App";
-import "./Shop.css";
+import ShopCSS from "./Shop.module.css";
 
 export default function Shop({ addToCart, removeFromCart }) {
   const products = useContext(ProductsContext);
@@ -18,17 +18,19 @@ export default function Shop({ addToCart, removeFromCart }) {
     setFilteredProducts(result);
   }
   return (
-    <>
-      <div className="filterContainer">
-        <input
-          placeholder="I am searching..."
-          className="filterInput"
-          ref={inputValue}
-          onChange={Filter}
-        ></input>
-      </div>
-      <section className="shop container">
-        {products ? null : <div className="loader"></div>}
+    <main>
+      <section className={ShopCSS.filter}>
+        <form>
+          <input
+            placeholder="I am searching..."
+            className={ShopCSS.filter_input}
+            ref={inputValue}
+            onChange={Filter}
+          ></input>
+        </form>
+      </section>
+      <section className={ShopCSS.shop}>
+        {products ? null : <div className={ShopCSS.loader}></div>}
         {filteredProducts
           ? filteredProducts?.map((product) => (
               <Card
@@ -47,6 +49,6 @@ export default function Shop({ addToCart, removeFromCart }) {
               />
             ))}
       </section>
-    </>
+    </main>
   );
 }

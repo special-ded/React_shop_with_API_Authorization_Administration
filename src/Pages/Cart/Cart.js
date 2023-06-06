@@ -30,7 +30,7 @@ export default function Cart({ addBtnHandler, removeBtnHandler }) {
                   >
                     -
                   </button>
-                  <p className="quantityCounter">{item.quantity}</p>
+                  <p className={CartCSS.quantityCounter}>{item.quantity}</p>
                   <button
                     className={CartCSS.remove_btn}
                     onClick={() => addBtnHandler(item)}

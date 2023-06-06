@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <header className={HeaderCSS.header}>
-      <nav className={HeaderCSS.header_container}>
+      <nav className={HeaderCSS.container}>
         <ul>
           <li>
             <Link to="/">Home</Link>

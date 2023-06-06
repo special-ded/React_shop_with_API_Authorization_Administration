@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Footer.css";
+import FooterCSS from "./Footer.module.css";
 
 export default function Footer() {
   return (
-    <footer className=" footer">
+    <footer className={FooterCSS.footer}>
       <ul>
         <li>
           <Link to="/">Home</Link>

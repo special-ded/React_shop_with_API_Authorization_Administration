@@ -1,4 +1,4 @@
-.header_container {
+.container {
   max-width: 1200px;
   padding: 0 20px 0 20px;
   margin: auto;
@@ -9,7 +9,6 @@
   position: sticky;
   top: 0px;
   background-color: #221f1f;
-  width: 100%;
 }
 
 ul {
