@@ -3,13 +3,22 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../App";
 import cart from "../../assets/imgs/cart.png";
 import user from "../../assets/imgs/user.png";
-import LoginModal from "../Modals/LoginModal/LoginModal";
 import { createPortal } from "react-dom";
 import HeaderCSS from "./Header.module.css";
+import LoginComponent from "../LoginComponent/LoginComponent";
 
 export default function Header() {
   const cartItems = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
+  const bodyElement = document.querySelector("body");
+
+  if (showModal) {
+    bodyElement.style.overflow = "hidden";
+    bodyElement.style.height = "100%";
+  } else {
+    bodyElement.style.overflow = "";
+    bodyElement.style.height = "";
+  }
 
   return (
     <header className={HeaderCSS.header}>
@@ -26,7 +35,7 @@ export default function Header() {
           </li>
           {showModal &&
             createPortal(
-              <LoginModal onClose={() => setShowModal(false)} />,
+              <LoginComponent onClose={() => setShowModal(false)} />,
               document.body
             )}
           <li>

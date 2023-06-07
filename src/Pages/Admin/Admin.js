@@ -1,6 +1,6 @@
 import AdminCSS from "./Admin.module.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Admin() {
   const accessToken = localStorage.getItem("access_token");

@@ -1,13 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import LoginCSS from "./Login.module.css";
+import LoginComponentCSS from "./LoginComponent.module.css";
 import axios from "axios";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])•{8,24}$/;
 const LOGIN_URL = "https://hys-fe-course-api-omega.vercel.app/auth/login";
 
-export default function Login({ onClose }) {
+export default function LoginComponent({ onClose }) {
   const userRef = useRef();
   const passwordRef = useRef();
   const errRef = useRef();
@@ -75,9 +75,10 @@ export default function Login({ onClose }) {
   }
 
   return (
-    <div className={LoginCSS.bg}>
-      <div className={LoginCSS.login_page}>
-        <div className={LoginCSS.form}>
+    <div>
+      <div className={LoginComponentCSS.bg}></div>
+      <div className={LoginComponentCSS.login_page}>
+        <div className={LoginComponentCSS.form}>
           <form onSubmit={submitHandler}>
             <input
               ref={userRef}
@@ -104,7 +105,7 @@ export default function Login({ onClose }) {
             />
             <p id="confirmnote"> Must match first password input field</p>
             <button onClick={() => onClose()}>Register</button>
-            <p className={LoginCSS.message}>
+            <p className={LoginComponentCSS.message}>
               Already registered? <a href="/login"> Log In</a>
             </p>
           </form>
