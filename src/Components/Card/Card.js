@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../App";
 import CardCSS from "./Card.module.css";
 
@@ -31,7 +32,10 @@ export default function Card({ product, addToCart, removeFromCart }) {
         <img src={product.image} />
       </figure>
       <div className={CardCSS.product}>
-        <h1>{product.name.slice(0, 20)}</h1>
+        <Link to={`/shop/${product.id}`}>
+          <h1>{product.name.slice(0, 20)}</h1>
+        </Link>
+
         <h2>{product.price} $</h2>
         <p className={CardCSS.desc}>{product.description.slice(0, 100)};</p>
         <button

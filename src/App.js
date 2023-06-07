@@ -10,6 +10,7 @@ import Admin from "./Pages/Admin/Admin";
 import "./App.css";
 import Checkout from "./Components/CartReceipt/Checkout";
 import Login from "./Pages/Login/Login";
+import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 
 export const ProductsContext = React.createContext();
 export const CartContext = React.createContext();
@@ -65,14 +66,14 @@ function App() {
   // function onLogin() {
   //   navigate("/home");
   // }
-  console.log(useId());
-  console.log(useId());
+
   return (
     <div className="App">
       <CartContext.Provider value={cartItems}>
         <ProductsContext.Provider value={products}>
           <Routes>
             <Route
+              exact
               path="/"
               element={[
                 <Header key={useId()} />,
@@ -85,6 +86,7 @@ function App() {
               ]}
             />
             <Route
+              exact
               path="/shop"
               element={[
                 <Header key={useId()} />,
@@ -97,6 +99,7 @@ function App() {
               ]}
             />
             <Route
+              exact
               path="/admin"
               element={[
                 <Header key={useId()} />,
@@ -105,6 +108,7 @@ function App() {
               ]}
             />
             <Route
+              exact
               path="/login"
               element={[
                 <Header key={useId()} />,
@@ -113,6 +117,7 @@ function App() {
               ]}
             />
             <Route
+              exact
               path="/cart"
               element={[
                 <Header key={useId()} />,
@@ -126,6 +131,7 @@ function App() {
                 <Footer key={useId()} />,
               ]}
             />
+            <Route element={<ProductDetail />} path="/shop/:productId" />
           </Routes>
         </ProductsContext.Provider>
       </CartContext.Provider>
