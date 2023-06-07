@@ -12,5 +12,37 @@
 .card_wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   padding-bottom: 60px;
 }
+
+/* LOADER */
+
+.loader {
+  margin-top: 200px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+.loader:after {
+  content: " ";
+  display: block;
+  width: 84px;
+  height: 84px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid rgb(137, 134, 131);
+  border-color: rgb(137, 134, 131) transparent rgb(137, 134, 131) transparent;
+  animation: loader 1.2s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* LOADER */

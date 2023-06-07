@@ -4,6 +4,7 @@
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 60px;
 }
 
@@ -50,6 +51,7 @@
   border-color: rgb(137, 134, 131) transparent rgb(137, 134, 131) transparent;
   animation: loader 1.2s linear infinite;
 }
+
 @keyframes loader {
   0% {
     transform: rotate(0deg);
@@ -58,4 +60,5 @@
     transform: rotate(360deg);
   }
 }
+
 /* LOADER */
