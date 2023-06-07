@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import uuid from "react-native-uuid";
+import React, { useState, useEffect, useId } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Home from "./Pages/Home/Home";
 import Shop from "./Pages/Shop/Shop";
 import Cart from "./Pages/Cart/Cart";
 import Footer from "./Components/Footer/Footer";
 import Admin from "./Pages/Admin/Admin";
-import Login from "./Components/Login/Login";
+
 import "./App.css";
 import Checkout from "./Components/CartReceipt/Checkout";
+import Login from "./Pages/Login/Login";
 
 export const ProductsContext = React.createContext();
 export const CartContext = React.createContext();
@@ -60,68 +60,73 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  // const navigate = useNavigate();
+
+  // function onLogin() {
+  //   navigate("/home");
+  // }
+  console.log(useId());
+  console.log(useId());
   return (
     <div className="App">
       <CartContext.Provider value={cartItems}>
         <ProductsContext.Provider value={products}>
-          <BrowserRouter>
-            <Routes>
-              <Route
-                path="/"
-                element={[
-                  <Header key={uuid.v4()} />,
-                  <Home
-                    key={uuid.v4()}
-                    addToCart={addToCart}
-                    removeFromCart={removeFromCart}
-                  />,
-                  <Footer key={uuid.v4()} />,
-                ]}
-              />
-              <Route
-                path="/shop"
-                element={[
-                  <Header key={uuid.v4()} />,
-                  <Shop
-                    key={uuid.v4()}
-                    removeFromCart={removeFromCart}
-                    addToCart={addToCart}
-                  />,
-                  <Footer key={uuid.v4()} />,
-                ]}
-              />
-              <Route
-                path="/admin"
-                element={[
-                  <Header key={uuid.v4()} />,
-                  <Admin key={uuid.v4()} />,
-                  <Footer key={uuid.v4()} />,
-                ]}
-              />
-              <Route
-                path="/login"
-                element={[
-                  <Header key={uuid.v4()} />,
-                  <Login key={uuid.v4()} />,
-                  <Footer key={uuid.v4()} />,
-                ]}
-              />
-              <Route
-                path="/cart"
-                element={[
-                  <Header key={uuid.v4()} />,
-                  <Cart
-                    key={uuid.v4()}
-                    removeFromCart={removeFromCart}
-                    addBtnHandler={addBtnHandler}
-                    removeBtnHandler={removeBtnHandler}
-                  />,
-                  <Checkout key={uuid.v4()} />,
-                  <Footer key={uuid.v4()} />,
-                ]}
-              />
-            </Routes>
-          </BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={[
+                <Header key={useId()} />,
+                <Home
+                  key={useId()}
+                  addToCart={addToCart}
+                  removeFromCart={removeFromCart}
+                />,
+                <Footer key={useId()} />,
+              ]}
+            />
+            <Route
+              path="/shop"
+              element={[
+                <Header key={useId()} />,
+                <Shop
+                  key={useId()}
+                  removeFromCart={removeFromCart}
+                  addToCart={addToCart}
+                />,
+                <Footer key={useId()} />,
+              ]}
+            />
+            <Route
+              path="/admin"
+              element={[
+                <Header key={useId()} />,
+                <Admin key={useId()} />,
+                <Footer key={useId()} />,
+              ]}
+            />
+            <Route
+              path="/login"
+              element={[
+                <Header key={useId()} />,
+                <Login key={useId()} />,
+                <Footer key={useId()} />,
+              ]}
+            />
+            <Route
+              path="/cart"
+              element={[
+                <Header key={useId()} />,
+                <Cart
+                  key={useId()}
+                  removeFromCart={removeFromCart}
+                  addBtnHandler={addBtnHandler}
+                  removeBtnHandler={removeBtnHandler}
+                />,
+                <Checkout key={useId()} />,
+                <Footer key={useId()} />,
+              ]}
+            />
+          </Routes>
         </ProductsContext.Provider>
       </CartContext.Provider>
     </div>
