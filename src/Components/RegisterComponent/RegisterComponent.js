@@ -1,13 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import LoginComponentCSS from "./LoginComponent.module.css";
+import RegisterComponentCSS from "./RegisterComponent.module.css";
 import axios from "axios";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])•{8,24}$/;
 const LOGIN_URL = "https://hys-fe-course-api-omega.vercel.app/auth/login";
 
-export default function LoginComponent({ onClose }) {
+export default function RegisterComponent({ onClose }) {
   const userRef = useRef();
   const passwordRef = useRef();
   const errRef = useRef();
@@ -76,9 +76,9 @@ export default function LoginComponent({ onClose }) {
 
   return (
     <section>
-      <div className={LoginComponentCSS.bg}></div>
-      <div className={LoginComponentCSS.login_page}>
-        <form className={LoginComponentCSS.form} onSubmit={submitHandler}>
+      <div className={RegisterComponentCSS.bg}></div>
+      <div className={RegisterComponentCSS.login_page}>
+        <form className={RegisterComponentCSS.form} onSubmit={submitHandler}>
           <input
             ref={userRef}
             onChange={(e) => setUser(e.target.value)}
@@ -93,10 +93,19 @@ export default function LoginComponent({ onClose }) {
             placeholder="password"
             required
           />
+          <input
+            ref={passwordRef}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            area-aria-invalid={validMatch ? "false" : "true"}
+            area-describedby="confirmnote"
+            placeholder="confirm password"
+            required
+          />
           <p id="confirmnote"> Must match first password input field</p>
-          <button onClick={() => onClose()}>Login</button>
-          <p className={LoginComponentCSS.message}>
-            Not registered? <a href="/user-register"> Register</a>
+          <button onClick={() => onClose()}>Register</button>
+          <p className={RegisterComponentCSS.message}>
+            Already registered? <a href="/user-login"> Log In</a>
           </p>
         </form>
       </div>

@@ -11,6 +11,9 @@ import "./App.css";
 import Checkout from "./Components/CartReceipt/Checkout";
 import Login from "./Pages/Login/Login";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
+import UserCabinet from "./Pages/UserCabinet/UserCabinet";
+import RegisterComponent from "./Components/RegisterComponent/RegisterComponent";
+import LoginComponent from "./Components/LoginComponent/LoginComponent";
 
 export const ProductsContext = React.createContext();
 export const CartContext = React.createContext();
@@ -61,66 +64,54 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
-  // const navigate = useNavigate();
-
-  // function onLogin() {
-  //   navigate("/home");
-  // }
-
   return (
     <div className="App">
       <CartContext.Provider value={cartItems}>
         <ProductsContext.Provider value={products}>
+          <Header key={useId()} />
           <Routes>
             <Route
               exact
               path="/"
               element={[
-                <Header key={useId()} />,
                 <Home
                   key={useId()}
                   addToCart={addToCart}
                   removeFromCart={removeFromCart}
                 />,
-                <Footer key={useId()} />,
               ]}
             />
             <Route
               exact
               path="/shop"
               element={[
-                <Header key={useId()} />,
                 <Shop
                   key={useId()}
                   removeFromCart={removeFromCart}
                   addToCart={addToCart}
                 />,
-                <Footer key={useId()} />,
               ]}
+            />
+            <Route exact path="/admin" element={<Admin key={useId()} />} />
+            <Route
+              exact
+              path="/user-login"
+              element={<LoginComponent key={useId()} />}
             />
             <Route
               exact
-              path="/admin"
-              element={[
-                <Header key={useId()} />,
-                <Admin key={useId()} />,
-                <Footer key={useId()} />,
-              ]}
+              path="/user-register"
+              element={<RegisterComponent key={useId()} />}
             />
             <Route
               exact
-              path="/login"
-              element={[
-                <Header key={useId()} />,
-                <Login key={useId()} />,
-                <Footer key={useId()} />,
-              ]}
+              path="/user-cabinet"
+              element={<UserCabinet key={useId()} />}
             />
             <Route
               exact
               path="/cart"
               element={[
-                <Header key={useId()} />,
                 <Cart
                   key={useId()}
                   removeFromCart={removeFromCart}
@@ -128,22 +119,20 @@ function App() {
                   removeBtnHandler={removeBtnHandler}
                 />,
                 <Checkout key={useId()} />,
-                <Footer key={useId()} />,
               ]}
             />
             <Route
-              element={[
-                <Header key={useId()} />,
+              element={
                 <ProductDetail
                   removeFromCart={removeFromCart}
                   addToCart={addToCart}
                   key={useId()}
-                />,
-                <Footer key={useId()} />,
-              ]}
+                />
+              }
               path="/shop/:productId"
             />
           </Routes>
+          <Footer key={useId()} />
         </ProductsContext.Provider>
       </CartContext.Provider>
     </div>

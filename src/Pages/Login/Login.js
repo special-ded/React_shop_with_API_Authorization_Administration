@@ -15,7 +15,7 @@ export default function Login() {
   return (
     <>
       <p> LOGIN PAGE</p>
-      {showModal && <LoginComponent onClose={() => setShowModal(false)} />}
+      <LoginComponent onClose={() => setShowModal(false)} />
     </>
   );
 }
