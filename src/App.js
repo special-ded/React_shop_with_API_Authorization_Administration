@@ -131,7 +131,18 @@ function App() {
                 <Footer key={useId()} />,
               ]}
             />
-            <Route element={<ProductDetail />} path="/shop/:productId" />
+            <Route
+              element={[
+                <Header key={useId()} />,
+                <ProductDetail
+                  removeFromCart={removeFromCart}
+                  addToCart={addToCart}
+                  key={useId()}
+                />,
+                <Footer key={useId()} />,
+              ]}
+              path="/shop/:productId"
+            />
           </Routes>
         </ProductsContext.Provider>
       </CartContext.Provider>
