@@ -22,15 +22,15 @@ export default function Header() {
 
   return (
     <header className={HeaderCSS.header}>
-      <nav className={HeaderCSS.container}>
-        <ul>
-          <li>
+      <nav className={HeaderCSS.nav}>
+        <ul className={HeaderCSS.nav__list}>
+          <li className={HeaderCSS.transform}>
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className={HeaderCSS.transform}>
             <Link to="/shop">Shop</Link>
           </li>
-          <li>
+          <li className={HeaderCSS.transform}>
             <Link to="/admin">Admin</Link>
           </li>
           {showModal &&
@@ -38,22 +38,26 @@ export default function Header() {
               <LoginComponent onClose={() => setShowModal(false)} />,
               document.body
             )}
-          <li>
-            <Link onClick={() => setShowModal(true)}>
-              <img
-                className={HeaderCSS.user_img}
-                width={"30px"}
-                src={user}
-              ></img>
-            </Link>
-            <Link className={HeaderCSS.cart_wrapper} to="/cart">
-              <img
-                className={HeaderCSS.cart_img}
-                width={"30px"}
-                src={cart}
-              ></img>
-              <span className={HeaderCSS.counter}>{cartItems.length}</span>
-            </Link>
+          <li className={HeaderCSS.group}>
+            <div className={HeaderCSS.transform}>
+              <Link onClick={() => setShowModal(true)}>
+                <img
+                  className={HeaderCSS.user_img}
+                  width={"30px"}
+                  src={user}
+                ></img>
+              </Link>
+            </div>
+            <div className={HeaderCSS.transform}>
+              <Link className={HeaderCSS.cart_wrapper} to="/cart">
+                <img
+                  className={HeaderCSS.user_img}
+                  width={"30px"}
+                  src={cart}
+                ></img>
+                <span className={HeaderCSS.counter}>{cartItems.length}</span>
+              </Link>
+            </div>
           </li>
         </ul>
       </nav>
