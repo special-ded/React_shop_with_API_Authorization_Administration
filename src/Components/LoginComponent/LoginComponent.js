@@ -2,10 +2,13 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginComponentCSS from "./LoginComponent.module.css";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])•{8,24}$/;
-const LOGIN_URL = "https://hys-fe-course-api-omega.vercel.app/auth/login";
+// const LOGIN_URL = "https://hys-fe-course-api-omega.vercel.app/auth/login";
+
+const LOGIN_URL = "https://api-git-master-special-ded.vercel.app/auth/login";
 
 export default function LoginComponent({ onClose }) {
   const userRef = useRef();
@@ -42,6 +45,8 @@ export default function LoginComponent({ onClose }) {
   function setToLocalStorage(key, response) {
     let token = JSON.stringify(response?.data.access_token);
     console.log("dddddddd", token);
+    let decoded = jwt_decode(token);
+    console.log(decoded);
     token && localStorage.setItem(key, token);
   }
 

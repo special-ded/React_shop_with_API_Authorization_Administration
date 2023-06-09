@@ -17,7 +17,8 @@ import LoginComponent from "./Components/LoginComponent/LoginComponent";
 
 export const ProductsContext = React.createContext();
 export const CartContext = React.createContext();
-const BASE_URL = "https://hys-fe-course-api-omega.vercel.app";
+// const BASE_URL = "https://hys-fe-course-api-omega.vercel.app";
+const BASE_URL = "https://api-git-master-special-ded.vercel.app";
 
 function App() {
   const [products, setProducts] = useState(null);

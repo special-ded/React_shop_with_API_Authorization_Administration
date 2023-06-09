@@ -5,7 +5,7 @@ import axios from "axios";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])•{8,24}$/;
-const LOGIN_URL = "https://hys-fe-course-api-omega.vercel.app/auth/login";
+const REGISTER_URL = "https://hys-fe-course-api-omega.vercel.app/users";
 
 export default function RegisterComponent({ onClose }) {
   const userRef = useRef();
@@ -49,7 +49,7 @@ export default function RegisterComponent({ onClose }) {
     e.preventDefault();
 
     const response = await axios
-      .post(LOGIN_URL, {
+      .post(REGISTER_URL, {
         username,
         password,
       })
