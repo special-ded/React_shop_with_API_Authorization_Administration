@@ -1,35 +1,46 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../App";
 import cart from "../../assets/imgs/cart.png";
 import user from "../../assets/imgs/user.png";
-import { createPortal } from "react-dom";
 import HeaderCSS from "./Header.module.css";
-import LoginComponent from "../LoginComponent/LoginComponent";
-import userEvent from "@testing-library/user-event";
+import jwt_decode from "jwt-decode";
+import localStorageService from "../../services/localStorage";
 
 export default function Header() {
-  const cartItems = useContext(CartContext);
-  const [showModal, setShowModal] = useState(false);
-  const bodyElement = document.querySelector("body");
+  const { cartItems, token, setToken } = useContext(CartContext);
   const navigate = useNavigate();
+  const [decodedToken, setDecodedToken] = useState({});
 
-  if (showModal) {
-    bodyElement.style.overflow = "hidden";
-    bodyElement.style.height = "100%";
-  } else {
-    bodyElement.style.overflow = "";
-    bodyElement.style.height = "";
-  }
-  const accessToken = localStorage.getItem("access_token");
+  useEffect(() => {
+    token && setDecodedToken(() => jwt_decode(token));
+  }, [token]);
+
+  console.log(decodedToken);
+  console.log(token);
 
   function clickHandler() {
-    if (!accessToken) {
+    if (!token) {
       navigate("/user-login");
     }
-    if (accessToken) {
+    if (token) {
+      console.log(token);
       navigate("/user-cabinet");
+      setDecodedToken(() => jwt_decode(token));
     }
+  }
+
+  function AuthHandler() {
+    if (token) {
+      localStorageService.deleteToken();
+      console.log(token);
+      setToken(null);
+      navigate("/user-login");
+      setDecodedToken(null);
+      return;
+    }
+
+    clickHandler();
   }
 
   return (
@@ -45,12 +56,18 @@ export default function Header() {
           <li className={HeaderCSS.transform}>
             <Link to="/admin">Admin</Link>
           </li>
-          {/* {showModal &&
-            createPortal(
-              <LoginComponent onClose={() => setShowModal(false)} />,
-              document.body
-            )} */}
           <li className={HeaderCSS.group}>
+            <div className={HeaderCSS.user}>
+              <span className={HeaderCSS.user_name}>
+                {decodedToken?.username || "Not Loged"}
+              </span>
+              <button
+                className={HeaderCSS.logout_btn}
+                onClick={() => AuthHandler()}
+              >
+                {token ? "Exit" : "Login"}
+              </button>
+            </div>
             <div onClick={() => clickHandler()} className={HeaderCSS.transform}>
               <Link>
                 <img

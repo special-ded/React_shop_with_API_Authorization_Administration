@@ -6,6 +6,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+}
+
 .login_page {
   position: absolute;
   top: 50%;

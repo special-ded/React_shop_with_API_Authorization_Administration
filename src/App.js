@@ -6,24 +6,25 @@ import Shop from "./Pages/Shop/Shop";
 import Cart from "./Pages/Cart/Cart";
 import Footer from "./Components/Footer/Footer";
 import Admin from "./Pages/Admin/Admin";
-
-import "./App.css";
-import Checkout from "./Components/CartReceipt/Checkout";
-import Login from "./Pages/Login/Login";
+import Checkout from "./Components/Checkout/Checkout";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 import UserCabinet from "./Pages/UserCabinet/UserCabinet";
 import RegisterComponent from "./Components/RegisterComponent/RegisterComponent";
 import LoginComponent from "./Components/LoginComponent/LoginComponent";
-
+import "./App.css";
+import localStorageService from "./services/localStorage";
+import AdminProtected from "./routes/AdminProtected";
 export const ProductsContext = React.createContext();
 export const CartContext = React.createContext();
-// const BASE_URL = "https://hys-fe-course-api-omega.vercel.app";
 const BASE_URL = "https://api-git-master-special-ded.vercel.app";
 
 function App() {
   const [products, setProducts] = useState(null);
   const [cartItems, setCartItems] = useState([]);
-
+  const [token, setToken] = useState(
+    localStorageService.getToken("access_token")
+  );
+  console.log(token);
   function addToCart(product) {
     const exist = cartItems.find((element) => element.id === product.id);
     if (exist) {
@@ -67,7 +68,7 @@ function App() {
 
   return (
     <div className="App">
-      <CartContext.Provider value={cartItems}>
+      <CartContext.Provider value={{ cartItems, token, setToken }}>
         <ProductsContext.Provider value={products}>
           <Header key={useId()} />
           <Routes>
@@ -93,7 +94,9 @@ function App() {
                 />,
               ]}
             />
-            <Route exact path="/admin" element={<Admin key={useId()} />} />
+            <Route element={<AdminProtected />}>
+              <Route exact path="/admin" element={<Admin key={useId()} />} />
+            </Route>
             <Route
               exact
               path="/user-login"
@@ -123,6 +126,7 @@ function App() {
               ]}
             />
             <Route
+              path="/shop/:productId"
               element={
                 <ProductDetail
                   removeFromCart={removeFromCart}
@@ -130,7 +134,6 @@ function App() {
                   key={useId()}
                 />
               }
-              path="/shop/:productId"
             />
           </Routes>
           <Footer key={useId()} />

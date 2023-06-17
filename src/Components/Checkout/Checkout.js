@@ -4,13 +4,13 @@ import { CartContext } from "../../App";
 import CheckoutCSS from "./Checkout.module.css";
 
 export default function Checkout() {
-  const cartProducts = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
   function calculateAmount() {
-    return cartProducts.reduce((Acc, product) => {
+    return cartItems.reduce((Acc, product) => {
       return Acc + product.quantity * product.price;
     }, 0);
   }
-  console.log(cartProducts);
+  console.log(cartItems);
   return (
     <section className={CheckoutCSS.receipt}>
       <div className={CheckoutCSS.receipt__wrapper}>

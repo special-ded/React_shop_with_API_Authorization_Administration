@@ -5,7 +5,7 @@ import CardCSS from "./Card.module.css";
 
 export default function Card({ product, addToCart, removeFromCart }) {
   const [inCart, setInCart] = useState(false);
-  const cartItems = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
 
   useEffect(() => {
     if (cartItems.find((element) => element.id === product.id)) {

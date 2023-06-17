@@ -27,6 +27,7 @@
 
 .group {
   display: flex;
+  align-items: center;
 }
 
 .cart_wrapper {
@@ -48,6 +49,21 @@
   text-align: center;
 }
 
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-right: 20px;
+}
+
+.user_name {
+  color: white;
+}
+
+.logout_btn {
+  cursor: pointer;
+}
+
 .user_img {
-  margin-right: 20px;
+  margin-right: 40px;
 }

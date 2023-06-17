@@ -1,25 +1,23 @@
-import { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import LoginComponentCSS from "./LoginComponent.module.css";
+import LoginAdminCSS from "./LoginAdmin.module.css";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 import localStorageService from "../../services/localStorage";
-import { CartContext } from "../../App";
 
-const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
+const USER_REGEX = /^[a-zA-Z]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])•{8,24}$/;
 const LOGIN_URL = "https://api-git-master-special-ded.vercel.app/auth/login";
 
-export default function LoginComponent() {
+export default function LoginAdmin() {
+  const [showModal, setShowModal] = useState(true);
+
   const userRef = useRef();
   const passwordRef = useRef();
   const errRef = useRef();
   const navigate = useNavigate();
-  const { token, setToken } = useContext(CartContext);
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
-
+  const [accessDenied, setAccessDenied] = useState(true);
   const [username, setUser] = useState("");
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
@@ -28,18 +26,12 @@ export default function LoginComponent() {
   const [validPassword, setValidPassword] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
 
-  const [matchPwd, setMatchPwd] = useState("");
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
-
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    if (!token) {
-      navigate("/user-login");
-    }
-  }, [token]);
+    userRef.current.focus();
+  }, []);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -60,18 +52,24 @@ export default function LoginComponent() {
         }
       });
 
-    setToken(response?.data.token);
-    localStorageService.setToken("access_token", response);
+    const decodedToken = jwt_decode(response?.data.token);
 
-    if (JSON.stringify(response?.data.token)) {
-      navigate("/user-cabinet");
+    if (decodedToken?.role !== "ADMIN") {
+      console.log(decodedToken?.role);
+      setAccessDenied(true);
+    } else {
+      setAccessDenied(false);
+      navigate("/admin");
     }
+
+    localStorageService.setToken("access_token", response);
   }
 
   return (
     <section>
-      <div className={LoginComponentCSS.login_page}>
-        <form className={LoginComponentCSS.form} onSubmit={submitHandler}>
+      <div className={LoginAdminCSS.login_page}>
+        <form className={LoginAdminCSS.form} onSubmit={submitHandler}>
+          <p id="confirmnote"> ADMIN ONLY</p>
           <input
             ref={userRef}
             onChange={(e) => setUser(e.target.value)}
@@ -86,11 +84,7 @@ export default function LoginComponent() {
             placeholder="password"
             required
           />
-          <p id="confirmnote"> Must match first password input field</p>
           <button>Login</button>
-          <p className={LoginComponentCSS.message}>
-            Not registered? <a href="/user-register"> Register</a>
-          </p>
         </form>
       </div>
     </section>

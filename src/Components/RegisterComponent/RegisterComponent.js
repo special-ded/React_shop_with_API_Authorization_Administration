@@ -5,9 +5,10 @@ import axios from "axios";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])•{8,24}$/;
-const REGISTER_URL = "https://hys-fe-course-api-omega.vercel.app/users";
+const REGISTER_URL =
+  "https://api-git-master-special-ded.vercel.app/auth/registration";
 
-export default function RegisterComponent({ onClose }) {
+export default function RegisterComponent({}) {
   const userRef = useRef();
   const passwordRef = useRef();
   const errRef = useRef();
@@ -40,8 +41,8 @@ export default function RegisterComponent({ onClose }) {
   }
 
   function setToLocalStorage(key, response) {
-    let token = JSON.stringify(response?.data.access_token);
-    console.log("dddddddd", token);
+    let token = JSON.stringify(response?.data.token);
+    console.log("TOKEN ", token);
     token && localStorage.setItem(key, token);
   }
 
@@ -52,6 +53,7 @@ export default function RegisterComponent({ onClose }) {
       .post(REGISTER_URL, {
         username,
         password,
+        role: "USER",
       })
       .catch((error) => {
         if (error.response) {
@@ -64,19 +66,19 @@ export default function RegisterComponent({ onClose }) {
         }
       });
 
+    console.log(response?.data?.token);
     setToLocalStorage("access_token", response);
     console.log(getFromLocalStorage("access_token"));
 
-    if (JSON.stringify(response?.data.access_token)) {
-      navigate("/admin");
+    if (JSON.stringify(response?.data.token)) {
+      navigate("/user-cabinet");
     }
 
-    console.log(JSON.stringify(response?.data.access_token));
+    console.log(JSON.stringify(response?.data.token));
   }
 
   return (
     <section>
-      <div className={RegisterComponentCSS.bg}></div>
       <div className={RegisterComponentCSS.login_page}>
         <form className={RegisterComponentCSS.form} onSubmit={submitHandler}>
           <input
@@ -93,7 +95,7 @@ export default function RegisterComponent({ onClose }) {
             placeholder="password"
             required
           />
-          <input
+          {/* <input
             ref={passwordRef}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
@@ -101,9 +103,9 @@ export default function RegisterComponent({ onClose }) {
             area-describedby="confirmnote"
             placeholder="confirm password"
             required
-          />
+          /> */}
           <p id="confirmnote"> Must match first password input field</p>
-          <button onClick={() => onClose()}>Register</button>
+          <button>Register</button>
           <p className={RegisterComponentCSS.message}>
             Already registered? <a href="/user-login"> Log In</a>
           </p>

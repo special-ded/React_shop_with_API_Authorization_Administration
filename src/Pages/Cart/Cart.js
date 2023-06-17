@@ -3,7 +3,7 @@ import { CartContext } from "../../App";
 import CartCSS from "./Cart.module.css";
 
 export default function Cart({ addBtnHandler, removeBtnHandler }) {
-  const cartItems = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <>
