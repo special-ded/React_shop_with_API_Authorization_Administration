@@ -24,7 +24,9 @@ export default function Admin() {
             <Link to="/admin/orders">
               <li className={s.navigation__item}>Orders</li>
             </Link>
-            <button className={s.navigation__button}>Log out</button>
+            <Link to="/admin/orders">
+              <li className={s.navigation__item}>Log out</li>
+            </Link>
           </ul>
         </nav>
         <div className={s.admin__products}>
