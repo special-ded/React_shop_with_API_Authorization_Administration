@@ -1,5 +1,5 @@
 import AdminCSS from "./Admin.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LoginAdmin from "../LoginAdmin/LoginAdmin";
 import jwt_decode from "jwt-decode";
@@ -46,30 +46,19 @@ export default function Admin() {
       <div className={AdminCSS.admin__wrapper}>
         <nav className={AdminCSS.admin__navigation}>
           <ul className={AdminCSS.navigation__list}>
-            <li className={AdminCSS.navigation__item}>Products</li>
+            <li className={AdminCSS.navigation__item}>
+              <Link to="/admin/products">Products</Link>
+            </li>
             <li className={AdminCSS.navigation__item}>Users</li>
             <li className={AdminCSS.navigation__item}>Orders</li>
             <button className={AdminCSS.navigation__button}>Log out</button>
           </ul>
         </nav>
-        <div className={AdminCSS.admin__products}>
-          <h2>Products</h2>
-          <div className={AdminCSS.products__wrapper}>
-            <ul className={AdminCSS.products__title}>
-              <li>Name</li>
-              <li>Price</li>
-              <li>ID</li>
-              <li>Description</li>
-            </ul>
-            <ul className={AdminCSS.product__info}>
-              <li>IPhone</li>
-              <li>790</li>
-              <li>44444444</li>
-              <li>Description,Description</li>
-            </ul>
-          </div>
-        </div>
       </div>
+      <Routes>
+        <Route path="/products/shirt" component={Shirt}></Route>
+        <Route path="/products/pants" component={Pants}></Route>
+      </Routes>
     </section>
   );
 }

@@ -11,7 +11,6 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])•{8,24}$/;
 const LOGIN_URL = "https://api-git-master-special-ded.vercel.app/auth/login";
 
 export default function LoginAdmin() {
-  const [showModal, setShowModal] = useState(true);
   const { setToken } = useContext(CartContext);
 
   const userRef = useRef();
