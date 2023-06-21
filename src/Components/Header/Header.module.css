@@ -1,14 +1,14 @@
-.nav {
-  max-width: 1200px;
-  padding: 0 20px 0 20px;
-  margin: auto;
-}
-
 .header {
   height: 70px;
   position: sticky;
   top: 0px;
   background-color: #221f1f;
+}
+
+.nav {
+  max-width: 1200px;
+  padding: 0 20px 0 20px;
+  margin: auto;
 }
 
 .nav__list {
@@ -19,6 +19,10 @@
   justify-content: space-between;
   align-items: center;
   list-style: none;
+}
+
+a {
+  color: #fff;
 }
 
 .transform:active {

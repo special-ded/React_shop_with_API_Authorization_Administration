@@ -1,15 +1,17 @@
+import s from "./AdminProducts.module.css";
+
 export default function AdminProducts() {
   return (
-    <div className={AdminCSS.admin__products}>
+    <div className={s.admin__products}>
       <h2>Products</h2>
-      <div className={AdminCSS.products__wrapper}>
-        <ul className={AdminCSS.products__title}>
+      <div className={s.products__wrapper}>
+        <ul className={s.products__title}>
           <li>Name</li>
           <li>Price</li>
           <li>ID</li>
           <li>Description</li>
         </ul>
-        <ul className={AdminCSS.product__info}>
+        <ul className={s.product__info}>
           <li>IPhone</li>
           <li>790</li>
           <li>44444444</li>

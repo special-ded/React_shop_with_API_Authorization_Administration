@@ -15,7 +15,6 @@ code {
 
 a {
   text-decoration: none;
-  color: #fff;
 }
 
 h1,
@@ -30,6 +29,7 @@ h6 {
 }
 
 ul {
+  padding: 0;
   list-style: none;
 }
 

@@ -14,6 +14,9 @@ import LoginComponent from "./Components/LoginComponent/LoginComponent";
 import "./App.css";
 import localStorageService from "./services/LocalStorage";
 import AdminProtected from "./routes/AdminProtected";
+import AdminProducts from "./Components/AdminProducts/AdminProducts";
+import AdminUsers from "./Components/AdminUsers/AdminUsers";
+import AdminOrders from "./Components/AdminOrders/AdminOrders";
 export const ProductsContext = React.createContext();
 export const CartContext = React.createContext();
 
@@ -93,7 +96,11 @@ function App() {
               ]}
             />
             <Route element={<AdminProtected token={token} />}>
-              <Route exact path="/admin" element={<Admin key={useId()} />} />
+              <Route exact path="/admin/*" element={<Admin key={useId()} />}>
+                <Route path="products" element={<AdminProducts />}></Route>
+                <Route path="users" element={<AdminUsers />}></Route>
+                <Route path="orders" element={<AdminOrders />}></Route>
+              </Route>
             </Route>
             <Route
               exact
