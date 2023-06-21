@@ -12,19 +12,20 @@ import UserCabinet from "./Pages/UserCabinet/UserCabinet";
 import RegisterComponent from "./Components/RegisterComponent/RegisterComponent";
 import LoginComponent from "./Components/LoginComponent/LoginComponent";
 import "./App.css";
-import localStorageService from "./services/localStorage";
+import localStorageService from "./services/LocalStorage";
 import AdminProtected from "./routes/AdminProtected";
 export const ProductsContext = React.createContext();
 export const CartContext = React.createContext();
+
 const BASE_URL = "https://api-git-master-special-ded.vercel.app";
 
 function App() {
   const [products, setProducts] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [token, setToken] = useState(
-    localStorageService.getToken("access_token")
+    localStorageService.getToken("access_token") || null
   );
-  console.log(token);
+
   function addToCart(product) {
     const exist = cartItems.find((element) => element.id === product.id);
     if (exist) {
@@ -40,11 +41,6 @@ function App() {
 
   function removeFromCart(id) {
     setCartItems((cartItems) => cartItems.filter((item) => item.id !== id));
-  }
-
-  function addBtnHandler(product) {
-    console.log(cartItems);
-    addToCart(product);
   }
 
   function removeBtnHandler(product) {
@@ -68,7 +64,9 @@ function App() {
 
   return (
     <div className="App">
-      <CartContext.Provider value={{ cartItems, token, setToken }}>
+      <CartContext.Provider
+        value={{ cartItems, setCartItems, token, setToken }}
+      >
         <ProductsContext.Provider value={products}>
           <Header key={useId()} />
           <Routes>
@@ -94,7 +92,7 @@ function App() {
                 />,
               ]}
             />
-            <Route element={<AdminProtected />}>
+            <Route element={<AdminProtected token={token} />}>
               <Route exact path="/admin" element={<Admin key={useId()} />} />
             </Route>
             <Route
@@ -119,7 +117,7 @@ function App() {
                 <Cart
                   key={useId()}
                   removeFromCart={removeFromCart}
-                  addBtnHandler={addBtnHandler}
+                  addToCart={addToCart}
                   removeBtnHandler={removeBtnHandler}
                 />,
                 <Checkout key={useId()} />,

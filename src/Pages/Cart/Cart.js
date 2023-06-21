@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { CartContext } from "../../App";
 import CartCSS from "./Cart.module.css";
 
-export default function Cart({ addBtnHandler, removeBtnHandler }) {
+export default function Cart({ addToCart, removeBtnHandler }) {
   const { cartItems } = useContext(CartContext);
 
   return (
@@ -33,7 +33,7 @@ export default function Cart({ addBtnHandler, removeBtnHandler }) {
                   <p className={CartCSS.quantityCounter}>{item.quantity}</p>
                   <button
                     className={CartCSS.remove_btn}
-                    onClick={() => addBtnHandler(item)}
+                    onClick={() => addToCart(item)}
                   >
                     +
                   </button>

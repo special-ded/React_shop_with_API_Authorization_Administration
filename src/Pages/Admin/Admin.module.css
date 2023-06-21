@@ -5,3 +5,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.admin {
+  font-family: "Roboto", sans-serif;
+}
+
+.admin__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin__products {
+  width: 70%;
+}
+
+.product__wrapper {
+  display: block;
+}
+
+.products__title {
+  display: flex;
+  gap: 20px;
+}
+
+.product__info {
+  display: grid;
+  grid-template-columns: 4;
+  gap: 20px;
+}

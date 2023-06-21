@@ -1,9 +1,10 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginAdminCSS from "./LoginAdmin.module.css";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import localStorageService from "../../services/localStorage";
+import localStorageService from "../../services/LocalStorage";
+import { CartContext } from "../../App";
 
 const USER_REGEX = /^[a-zA-Z]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%])•{8,24}$/;
@@ -11,6 +12,7 @@ const LOGIN_URL = "https://api-git-master-special-ded.vercel.app/auth/login";
 
 export default function LoginAdmin() {
   const [showModal, setShowModal] = useState(true);
+  const { setToken } = useContext(CartContext);
 
   const userRef = useRef();
   const passwordRef = useRef();
@@ -61,7 +63,7 @@ export default function LoginAdmin() {
       setAccessDenied(false);
       navigate("/admin");
     }
-
+    setToken(response?.data.token);
     localStorageService.setToken("access_token", response);
   }
 

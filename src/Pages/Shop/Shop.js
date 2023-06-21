@@ -8,7 +8,7 @@ export default function Shop({ addToCart, removeFromCart }) {
   const [filteredProducts, setFilteredProducts] = useState(null);
 
   const inputValue = useRef(null);
-
+  console.log(products);
   function Filter() {
     const result = products?.filter((product) =>
       (product.name + product.description + product.price)

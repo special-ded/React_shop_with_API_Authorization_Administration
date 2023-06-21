@@ -29,6 +29,10 @@ h6 {
   font-weight: normal;
 }
 
+ul {
+  list-style: none;
+}
+
 .button {
   cursor: pointer;
   border: none;

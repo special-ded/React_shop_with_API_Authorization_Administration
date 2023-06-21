@@ -10,7 +10,6 @@ export default function Checkout() {
       return Acc + product.quantity * product.price;
     }, 0);
   }
-  console.log(cartItems);
   return (
     <section className={CheckoutCSS.receipt}>
       <div className={CheckoutCSS.receipt__wrapper}>

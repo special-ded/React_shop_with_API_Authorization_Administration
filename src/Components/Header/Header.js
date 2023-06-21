@@ -5,7 +5,7 @@ import cart from "../../assets/imgs/cart.png";
 import user from "../../assets/imgs/user.png";
 import HeaderCSS from "./Header.module.css";
 import jwt_decode from "jwt-decode";
-import localStorageService from "../../services/localStorage";
+import localStorageService from "../../services/LocalStorage";
 
 export default function Header() {
   const { cartItems, token, setToken } = useContext(CartContext);
@@ -15,9 +15,6 @@ export default function Header() {
   useEffect(() => {
     token && setDecodedToken(() => jwt_decode(token));
   }, [token]);
-
-  console.log(decodedToken);
-  console.log(token);
 
   function clickHandler() {
     if (!token) {
@@ -84,7 +81,7 @@ export default function Header() {
                   width={"30px"}
                   src={cart}
                 ></img>
-                <span className={HeaderCSS.counter}>{cartItems.length}</span>
+                <span className={HeaderCSS.counter}>{cartItems?.length}</span>
               </Link>
             </div>
           </li>
