@@ -4,8 +4,17 @@ import AdminProducts from "../../Components/AdminProducts/AdminProducts";
 import AdminOrders from "../../Components/AdminOrders/AdminOrders";
 import AdminUsers from "../../Components/AdminUsers/AdminUsers";
 import admin from "../../assets/imgs/admin.png";
+import { CartContext } from "../../App";
+import { useContext } from "react";
+import localStorageService from "../../services/LocalStorage";
 
 export default function Admin() {
+  const { setToken } = useContext(CartContext);
+  function Logout() {
+    localStorageService.deleteToken();
+    setToken(null);
+  }
+
   return (
     <section className={s.admin}>
       <div className={s.admin__wrapper}>
@@ -24,9 +33,9 @@ export default function Admin() {
             <Link to="/admin/orders">
               <li className={s.navigation__item}>Orders</li>
             </Link>
-            <Link to="/admin/orders">
-              <li className={s.navigation__item}>Log out</li>
-            </Link>
+            <li onClick={Logout} className={s.navigation__item}>
+              Log out
+            </li>
           </ul>
         </nav>
         <div className={s.admin__products}>

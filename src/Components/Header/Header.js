@@ -10,10 +10,11 @@ import localStorageService from "../../services/LocalStorage";
 export default function Header() {
   const { cartItems, token, setToken } = useContext(CartContext);
   const navigate = useNavigate();
-  const [decodedToken, setDecodedToken] = useState({});
+  const [decodedToken, setDecodedToken] = useState(null);
 
   useEffect(() => {
     token && setDecodedToken(() => jwt_decode(token));
+    !token && setDecodedToken(null);
   }, [token]);
 
   function clickHandler() {

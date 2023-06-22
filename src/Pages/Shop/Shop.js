@@ -4,7 +4,7 @@ import { ProductsContext } from "../../App";
 import ShopCSS from "./Shop.module.css";
 
 export default function Shop({ addToCart, removeFromCart }) {
-  const products = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
   const [filteredProducts, setFilteredProducts] = useState(null);
 
   const inputValue = useRef(null);

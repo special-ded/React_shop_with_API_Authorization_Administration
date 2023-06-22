@@ -1,22 +1,23 @@
-import s from "./AdminUsers";
+import { useContext } from "react";
+import User from "../User/User";
+import s from "./AdminUsers.module.css";
+import { ProductsContext } from "../../App";
 
 export default function AdminUsers() {
+  const { users } = useContext(ProductsContext);
   return (
-    <div className={s.admin__products}>
-      <h2>Users</h2>
-      <div className={s.products__wrapper}>
-        <ul className={s.products__title}>
+    <div className={s.users}>
+      <h2 className={s.title}>Users</h2>
+      <div className={s.users__wrapper}>
+        <ul className={s.users__titles}>
           <li>Name</li>
-          <li>Price</li>
+          <li>Role</li>
           <li>ID</li>
-          <li>Description</li>
+          <li>Date Registered</li>
         </ul>
-        <ul className={s.product__info}>
-          <li>IPhone</li>
-          <li>790</li>
-          <li>44444444</li>
-          <li>Description,Description</li>
-        </ul>
+        {users?.map((user) => {
+          return <User key={user.id} user={user} />;
+        })}
       </div>
     </div>
   );

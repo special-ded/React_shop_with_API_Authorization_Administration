@@ -1,0 +1,11 @@
+.user {
+  display: grid;
+  grid: repeat(1, 60px) / auto-flow 30% 5% 25% 20%;
+  justify-content: space-between;
+}
+
+.user__description {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

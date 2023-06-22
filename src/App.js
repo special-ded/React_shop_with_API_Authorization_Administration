@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useId } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Home from "./Pages/Home/Home";
 import Shop from "./Pages/Shop/Shop";
@@ -17,12 +17,16 @@ import AdminProtected from "./routes/AdminProtected";
 import AdminProducts from "./Components/AdminProducts/AdminProducts";
 import AdminUsers from "./Components/AdminUsers/AdminUsers";
 import AdminOrders from "./Components/AdminOrders/AdminOrders";
+import UserHttpService from "./services/user-http.service";
+import OrdersHttpService from "./services/orders-http.service";
 export const ProductsContext = React.createContext();
 export const CartContext = React.createContext();
 
 const BASE_URL = "https://api-git-master-special-ded.vercel.app";
 
 function App() {
+  const [users, setUsers] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [token, setToken] = useState(
@@ -65,12 +69,35 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  // useEffect(() => {
+  //   UserHttpService().then((data) => {
+  //     console.log(data);
+  //   });
+
+  //   fetch(BASE_URL + "/users")
+  //     .then((response) => response.json())
+  //     .then((json) => setUsers(json))
+  //     .catch((error) => console.error(error));
+  // }, []);
+
+  useEffect(() => {
+    UserHttpService().then((data) => {
+      setUsers(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    OrdersHttpService().then((data) => {
+      setOrders(data);
+    });
+  }, []);
+
   return (
     <div className="App">
       <CartContext.Provider
         value={{ cartItems, setCartItems, token, setToken }}
       >
-        <ProductsContext.Provider value={products}>
+        <ProductsContext.Provider value={{ products, users, orders }}>
           <Header key={useId()} />
           <Routes>
             <Route

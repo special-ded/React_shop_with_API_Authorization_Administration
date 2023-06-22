@@ -1,0 +1,17 @@
+.users {
+  background-color: rgb(66, 203, 45);
+}
+
+.title {
+  font-weight: 700;
+  font-size: 45px;
+  text-align: center;
+}
+
+.users__titles {
+  display: grid;
+  grid: repeat(1, 60px) / auto-flow 30% 5% 25% 20%;
+  justify-content: space-between;
+  font-size: 25px;
+  font-weight: 600;
+}

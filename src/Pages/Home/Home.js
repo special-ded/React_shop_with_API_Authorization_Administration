@@ -4,7 +4,7 @@ import { ProductsContext } from "../../App";
 import Card from "../../Components/Card/Card";
 
 export default function Home({ addToCart, removeFromCart }) {
-  const products = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
 
   return (
     <main className={HomeCSS.home}>

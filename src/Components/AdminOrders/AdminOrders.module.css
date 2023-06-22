@@ -1,0 +1,17 @@
+.title {
+  font-weight: 700;
+  font-size: 45px;
+  text-align: center;
+}
+
+.admin__products {
+  background-color: rgb(217, 220, 44);
+}
+
+.products__titles {
+  display: grid;
+  grid: repeat(1, 60px) / auto-flow 20% 15% 25% 20%;
+  justify-content: space-between;
+  font-size: 25px;
+  font-weight: 600;
+}
