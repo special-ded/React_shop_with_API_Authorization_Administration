@@ -8,57 +8,8 @@
   display: flex;
 }
 
-.admin__navigation {
-  width: 306px;
-  height: 100vh;
-  background-color: rgb(88, 105, 218);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-family: "Roboto Mono", monospace;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 44px;
-  border-radius: 2px;
-}
-
-.navigation__list {
-  text-align: center;
-}
-
 .admin__title {
   padding-bottom: 40px;
-}
-
-.navigation__item {
-  height: 60px;
-  border-radius: 40px;
-  cursor: pointer;
-  line-height: 60px;
-}
-
-.navigation__item:hover {
-  background-color: rgb(115, 129, 220);
-}
-
-.navigation__item:active {
-  background-color: rgb(204, 224, 224);
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.active > .navigation__item {
-  background-color: #ccc;
-  border-radius: 40px;
-}
-
-.navigation__item a {
-  color: black;
-}
-
-.img {
-  border-radius: 50%;
-  width: 150px;
 }
 
 .admin__products {
