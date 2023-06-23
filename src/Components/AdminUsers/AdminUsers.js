@@ -2,6 +2,7 @@ import { useContext } from "react";
 import User from "../User/User";
 import s from "./AdminUsers.module.css";
 import { ProductsContext } from "../../App";
+import Loader from "../Loader/Loader";
 
 export default function AdminUsers() {
   const { users } = useContext(ProductsContext);
@@ -15,6 +16,11 @@ export default function AdminUsers() {
           <li>ID</li>
           <li>Date Registered</li>
         </ul>
+        {!users && (
+          <div className={s.loader}>
+            <Loader />
+          </div>
+        )}
         {users?.map((user) => {
           return <User key={user.id} user={user} />;
         })}

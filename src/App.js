@@ -25,8 +25,8 @@ export const CartContext = React.createContext();
 const BASE_URL = "https://api-git-master-special-ded.vercel.app";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [orders, setOrders] = useState([]);
+  const [users, setUsers] = useState(null);
+  const [orders, setOrders] = useState(null);
   const [products, setProducts] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [token, setToken] = useState(

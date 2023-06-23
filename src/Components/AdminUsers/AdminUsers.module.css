@@ -1,5 +1,7 @@
 .users {
-  background-color: rgb(66, 203, 45);
+  background-color: #ccc;
+  height: 100%;
+  position: relative;
 }
 
 .title {
@@ -14,4 +16,10 @@
   justify-content: space-between;
   font-size: 25px;
   font-weight: 600;
+}
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

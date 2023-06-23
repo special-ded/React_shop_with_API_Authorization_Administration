@@ -6,9 +6,7 @@ import Loader from "../Loader/Loader";
 
 export default function AdminProducts() {
   const { products } = useContext(ProductsContext);
-  // const products = null;
 
-  console.log(products);
   return (
     <div className={s.admin__products}>
       <h2 className={s.title}>Products</h2>
