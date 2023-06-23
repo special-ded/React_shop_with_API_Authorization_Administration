@@ -2,9 +2,11 @@ import { useContext, useId } from "react";
 import s from "./AdminProducts.module.css";
 import { ProductsContext } from "../../App";
 import Product from "../Product/Product";
+import Loader from "../Loader/Loader";
 
 export default function AdminProducts() {
   const { products } = useContext(ProductsContext);
+  // const products = null;
 
   console.log(products);
   return (
@@ -17,6 +19,11 @@ export default function AdminProducts() {
           <li>ID</li>
           <li>Description</li>
         </ul>
+        {!products && (
+          <div className={s.loader}>
+            <Loader />
+          </div>
+        )}
         {products?.map((product) => {
           return <Product key={product.id} product={product} />;
         })}
