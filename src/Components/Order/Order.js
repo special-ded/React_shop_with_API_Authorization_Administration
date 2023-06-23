@@ -1,7 +1,6 @@
 import s from "./Order.module.css";
 
 export default function Order({ order }) {
-  console.log(order);
   return (
     <ul className={s.order}>
       <li>{order.name}</li>

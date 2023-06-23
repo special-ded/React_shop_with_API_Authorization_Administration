@@ -52,7 +52,7 @@ export default function Header() {
             <Link to="/shop">Shop</Link>
           </li>
           <li className={HeaderCSS.transform}>
-            <Link to="/admin">Admin</Link>
+            <Link to="/admin/products">Admin</Link>
           </li>
           <li className={HeaderCSS.group}>
             <div className={HeaderCSS.user}>

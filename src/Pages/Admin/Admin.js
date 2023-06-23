@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes } from "react-router-dom";
 import s from "./Admin.module.css";
 import AdminProducts from "../../Components/AdminProducts/AdminProducts";
 import AdminOrders from "../../Components/AdminOrders/AdminOrders";
@@ -24,15 +24,32 @@ export default function Admin() {
               <img src={admin} className={s.img}></img>
               <h4 className={s.admin__title}>Hi, Admin</h4>
             </li>
-            <Link to="/admin/products">
+            <NavLink
+              to="/admin/products"
+              className={({ isActive, isPending }) =>
+                isPending ? "s.pending" : isActive ? `${s.active}` : ""
+              }
+            >
               <li className={s.navigation__item}>Products</li>
-            </Link>
-            <Link to="/admin/users">
+            </NavLink>
+            <NavLink
+              to="/admin/users"
+              className={({ isActive, isPending }) =>
+                isPending ? "s.pending" : isActive ? `${s.active}` : ""
+              }
+            >
+              {" "}
               <li className={s.navigation__item}>Users</li>
-            </Link>
-            <Link to="/admin/orders">
+            </NavLink>
+            <NavLink
+              to="/admin/orders"
+              className={({ isActive, isPending }) =>
+                isPending ? "s.pending" : isActive ? `${s.active}` : ""
+              }
+            >
+              {" "}
               <li className={s.navigation__item}>Orders</li>
-            </Link>
+            </NavLink>
             <li onClick={Logout} className={s.navigation__item}>
               Log out
             </li>

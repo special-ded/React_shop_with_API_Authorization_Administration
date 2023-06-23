@@ -60,7 +60,7 @@ export default function LoginAdmin() {
       setAccessDenied(true);
     } else {
       setAccessDenied(false);
-      navigate("/admin");
+      navigate("/admin/products");
     }
     setToken(response?.data.token);
     localStorageService.setToken("access_token", response);
