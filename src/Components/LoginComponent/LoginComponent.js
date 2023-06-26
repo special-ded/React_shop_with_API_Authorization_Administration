@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginComponentCSS from "./LoginComponent.module.css";
 import axios from "axios";
-import localStorageService from "../../services/LocalStorage";
+import localStorageService from "../../services/localStorage.service";
 import { CartContext } from "../../App";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;

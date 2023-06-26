@@ -12,7 +12,7 @@ import UserCabinet from "./Pages/UserCabinet/UserCabinet";
 import RegisterComponent from "./Components/RegisterComponent/RegisterComponent";
 import LoginComponent from "./Components/LoginComponent/LoginComponent";
 import "./App.css";
-import localStorageService from "./services/LocalStorage";
+import localStorageService from "./services/localStorage.service";
 import AdminProtected from "./routes/AdminProtected";
 import AdminProducts from "./Components/AdminProducts/AdminProducts";
 import AdminUsers from "./Components/AdminUsers/AdminUsers";
@@ -84,13 +84,13 @@ function App() {
     UserHttpService().then((data) => {
       setUsers(data);
     });
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     OrdersHttpService().then((data) => {
       setOrders(data);
     });
-  }, []);
+  }, [token]);
 
   return (
     <div className="App">

@@ -5,7 +5,7 @@ import cart from "../../assets/imgs/cart.png";
 import user from "../../assets/imgs/user.png";
 import HeaderCSS from "./Header.module.css";
 import jwt_decode from "jwt-decode";
-import localStorageService from "../../services/LocalStorage";
+import localStorageService from "../../services/localStorage.service";
 
 export default function Header() {
   const { cartItems, token, setToken } = useContext(CartContext);

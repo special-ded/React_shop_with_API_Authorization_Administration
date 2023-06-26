@@ -6,7 +6,7 @@ import AdminUsers from "../../Components/AdminUsers/AdminUsers";
 
 import { CartContext } from "../../App";
 import { useContext } from "react";
-import localStorageService from "../../services/LocalStorage";
+import localStorageService from "../../services/localStorage.service";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 
 export default function Admin() {

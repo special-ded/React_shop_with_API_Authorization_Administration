@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import LoginAdminCSS from "./LoginAdmin.module.css";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import localStorageService from "../../services/LocalStorage";
+import localStorageService from "../../services/localStorage.service";
 import { CartContext } from "../../App";
 
 const USER_REGEX = /^[a-zA-Z]{3,23}$/;

@@ -1,15 +1,12 @@
 import axios from "axios";
+import localStorageService from "./localStorage.service";
 
 export default async function OrdersHttpService() {
   const ORDERS_URL = "https://api-git-master-special-ded.vercel.app/orders";
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiI2M2M0MzQ1OTk1M2M4MDUzYWNkMDIxOTMiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2ODc0MjU4MDEsImV4cCI6MTY4NzUxMjIwMX0.njXxLmu28NqNjYk8lznbAxIR3OAIWw8XcYzPPpeIRiQ";
+  const token = JSON.parse(localStorageService.getToken("access_token"));
+
   const config = {
     headers: { Authorization: `Bearer ${token}` },
-  };
-
-  const bodyParameters = {
-    key: "value",
   };
 
   const response = await axios.get(ORDERS_URL, config).catch((error) => {
@@ -23,5 +20,5 @@ export default async function OrdersHttpService() {
     }
   });
   console.log(response);
-  return response.data;
+  return response?.data;
 }

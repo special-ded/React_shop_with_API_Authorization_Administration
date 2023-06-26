@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../../App";
-import localStorageService from "../../services/LocalStorage";
+import localStorageService from "../../services/localStorage.service";
 import s from "./Sidebar.module.css";
 import admin from "../../assets/imgs/admin.png";
 
