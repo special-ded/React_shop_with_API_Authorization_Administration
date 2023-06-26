@@ -69,17 +69,6 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
-  // useEffect(() => {
-  //   UserHttpService().then((data) => {
-  //     console.log(data);
-  //   });
-
-  //   fetch(BASE_URL + "/users")
-  //     .then((response) => response.json())
-  //     .then((json) => setUsers(json))
-  //     .catch((error) => console.error(error));
-  // }, []);
-
   useEffect(() => {
     UserHttpService().then((data) => {
       setUsers(data);
